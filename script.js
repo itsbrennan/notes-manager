@@ -86,3 +86,28 @@ hideItem.addEventListener('click', function(){
     ul.style.display = 'block';
   }
 })
+
+// Search filter
+
+searchInput = document.querySelector('#search-note input');
+
+searchInput.addEventListener('keypress', function(e){
+  
+  var searchChar = e.target.value.toUpperCase();
+  
+  let notes = ul.getElementsByTagName('li');
+
+  Array.from(notes).forEach(function(note){
+
+    var parText = note.firstElementChild.textContent;
+    if(parText.toUpperCase().indexOf(searchChar) !== -1 ){
+      note.style.display = 'block';
+    } else {
+      note.style.display = 'none';
+    }
+    
+  });
+  
+})
+
+
